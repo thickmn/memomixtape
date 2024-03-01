@@ -12,7 +12,6 @@ from src.config import (
 )
 
 
-
 try:
     descope_client = DescopeClient(project_id=DESCOPE_ID)
 except Exception as error:
@@ -43,6 +42,7 @@ def about() -> Dict[str, Any]:
     This function can only be used after the user has logged in.
     """
     return app.storage.user['descope']
+
 
 def token() -> Dict[str, Any]:
     return app.storage.user['jwt_response']
