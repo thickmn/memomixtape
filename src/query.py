@@ -91,6 +91,36 @@ class BuildTracklist:
             'result_tracks': result_tracks
         }
 
+    def _generate_suggestions(self, tracks: List[Dict[str, Any]], original_phrase: str, checked_tracks: List[Dict[str, Any]]) -> List[str]:
+            """Generate alternative phrases considering exact matches and suggesting alternatives for unmatched segments."""
+            exact_matches = [track for track in checked_tracks if track]
+            unmatched_tracks = [track for track in tracks if track not in exact_matches]
+            input_tokens = set(original_phrase.lower().split())
+            suggestions = []
+            
+            if exact_matches:
+                base_phrase = " ".join([track['name'] for track in exact_matches])
+                suggestions.append(base_phrase)
+            
+            for track in unmatched_tracks:
+                track_name = track['name']
+                track_tokens = set(track_name.lower().split())
+                similarity = len(input_tokens.intersection(track_tokens))
+                if similarity > 0:  
+                    suggestions.append(track_name)
+            
+            # If there are too many suggestions, prioritize by similarity
+            if len(suggestions) > 3:
+                suggestions.sort(key=lambda name: -len(set(name.lower().split()).intersection(input_tokens)))
+                suggestions = suggestions[:3]
+
+            # Combine exact matches with top unmatched suggestions to form final suggestions
+            final_suggestions = []
+            for suggestion in suggestions:
+                combined = base_phrase + " " + suggestion if 'base_phrase' in locals() else suggestion
+                final_suggestions.append(combined.strip())
+
+            return list(dict.fromkeys(final_suggestions))[:3]
 
 class SpotifyPlaylistCreator:
     def __init__(self, tracks: List[Dict[str, Any]], playlist_name: str = "MemoMixtape", playlist_description: str = "A playlist generated from a phrase."):
@@ -112,4 +142,3 @@ class SpotifyPlaylistCreator:
             self._sp.user_playlist_add_tracks(user_id, playlist['id'], track_uris)
             return playlist['external_urls']['spotify']
         return None
-

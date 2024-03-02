@@ -23,12 +23,10 @@ def handle_log_out(descope_client):
 
 def login_form() -> ui.element:
     """Create and return the Descope login form."""
-    ui.colors(
-        primary="#1DB954",
-    )
+    ui.colors(primary="#1DB954",)
     add_head_html()
     with ui.row().classes('w-full h-full flex justify-center items-center'):
-        return ui.element('descope-wc').props(f'project-id="{DESCOPE_ID}" flow-id="sign-in"') \
+        return ui.element('descope-wc').props(f'project-id="{DESCOPE_ID}" flow-id="sign-up-or-in"') \
             .on('success', lambda e: app.storage.user.update({'descope': e.args['detail']['user']}))
 
 
