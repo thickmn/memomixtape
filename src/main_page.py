@@ -1,4 +1,5 @@
 from src.style import title
+from src.header import add_head_html
 from src.query import BuildTracklist, SpotifyPlaylistCreator
 
 from nicegui import context, ui
@@ -8,6 +9,7 @@ async def create() -> None:
     """Create the content of the main page."""
     ui.colors(primary="#1DB954")
     context.get_client().content.classes('p-0 gap-0')
+    add_head_html()
 
     with ui.row() \
         .classes('w-full h-screen flex justify-center items-center no-wrap into-section'):
