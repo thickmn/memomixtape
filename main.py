@@ -4,10 +4,11 @@ from pathlib import Path
 from starlette.middleware.sessions import SessionMiddleware
 from fastapi.responses import HTMLResponse
 from fastapi import FastAPI
-
 from nicegui import app, ui
+
 from src import main_page
 from src import user
+
 from dotenv import load_dotenv
 
 load_dotenv()
