@@ -2,11 +2,9 @@ import logging
 from typing import Any, Callable, Dict
 
 from descope import DescopeClient, AuthException
-from nicegui import app, Client, ui
-
 from nicegui import Client, app, helpers, ui
-from src.header import add_head_html
 
+from src.header import add_head_html
 from src.config import (
     DESCOPE_ID,
 )
@@ -44,10 +42,6 @@ def about() -> Dict[str, Any]:
     return app.storage.user['descope']
 
 
-def token() -> Dict[str, Any]:
-    return app.storage.user['jwt_response']
-
-
 async def logout() -> None:
     """Logout the user."""
     result = await ui.run_javascript('return await sdk.logout()')
@@ -80,7 +74,9 @@ class page(ui.page):
                     const sessionToken = sdk.getSessionToken()
                 </script>                 
             ''')
+            
             await client.connected()
+            
             if await self._is_logged_in():
                 if self.path == self.LOGIN_PATH:
                     self._refresh()
