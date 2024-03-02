@@ -26,7 +26,6 @@ async def create() -> None:
 
 async def on_generate_click(e, input_phrase: str, minimize: bool):
     """Handle the generation button click event."""
-    
     builder = BuildTracklist(phrase=input_phrase, minimize_track_count=minimize)
     spinner = ui.spinner(size="sm")
     spinner.visible = True
@@ -50,8 +49,6 @@ async def on_generate_click(e, input_phrase: str, minimize: bool):
 
                 ui.button('Close', on_click=dialog.close) \
                         .classes('flex justify-center mt-2').props('color=primary')
-
-
     else:
         spinner.visible = False
         ui.notification('Failed to create Spotify playlist.')
