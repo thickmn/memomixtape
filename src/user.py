@@ -5,9 +5,7 @@ from descope import DescopeClient, AuthException
 from nicegui import Client, app, helpers, ui
 
 from src.header import add_head_html
-from src.config import (
-    DESCOPE_ID,
-)
+from src.config import DESCOPE_ID
 
 
 try:
