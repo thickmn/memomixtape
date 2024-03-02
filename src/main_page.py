@@ -37,20 +37,15 @@ async def on_generate_click(e, input_phrase: str, minimize: bool):
         ui.notification('Playlist successfully created!')
         spinner.visible = False
         with ui.dialog() as dialog, ui.card():
-
-            with ui.column() \
-                .classes('flex justify-center items-center no-wrap into-section'):
-
-                title('Your*Playlist*')
-
+            with ui.column().classes('flex justify-center items-center no-wrap into-section'):
                 # Create a Spotify playlist with the generated tracklist
                 playlist_creator = SpotifyPlaylistCreator(tracks=result['result_tracks'])
                 playlist_url = await playlist_creator.create_playlist()
-
-                ui.link(f"{playlist_url}", target=playlist_url, new_tab=True)
-
-                ui.button('Close', on_click=dialog.close) \
-                        .classes('flex justify-center mt-2').props('color=primary')
+                oembed_endpoint = f"https://open.spotify.com/oembed?url={playlist_url}"
+                response = requests.get(oembed_endpoint)
+                oembed_html = response.json()['html']
+                ui.html(oembed_html)
+                ui.button('Close', on_click=dialog.close).classes('flex justify-center mt-2').props('color=primary')
     else:
         spinner.visible = False
         ui.notification('Failed to create Spotify playlist.')
