@@ -91,6 +91,7 @@ class BuildTracklist:
             'result_tracks': result_tracks
         }
 
+<<<<<<< HEAD
     def _generate_suggestions(self, tracks: List[Dict[str, Any]], original_phrase: str, checked_tracks: List[Dict[str, Any]]) -> List[str]:
             """Generate alternative phrases considering exact matches and suggesting alternatives for unmatched segments."""
             exact_matches = [track for track in checked_tracks if track]
@@ -121,6 +122,8 @@ class BuildTracklist:
                 final_suggestions.append(combined.strip())
 
             return list(dict.fromkeys(final_suggestions))[:3]
+=======
+>>>>>>> 239bbce (first commit)
 
 class SpotifyPlaylistCreator:
     def __init__(self, tracks: List[Dict[str, Any]], playlist_name: str = "MemoMixtape", playlist_description: str = "A playlist generated from a phrase."):
@@ -142,3 +145,7 @@ class SpotifyPlaylistCreator:
             self._sp.user_playlist_add_tracks(user_id, playlist['id'], track_uris)
             return playlist['external_urls']['spotify']
         return None
+<<<<<<< HEAD
+=======
+
+>>>>>>> 239bbce (first commit)

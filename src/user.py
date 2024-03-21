@@ -2,10 +2,22 @@ import logging
 from typing import Any, Callable, Dict
 
 from descope import DescopeClient, AuthException
+<<<<<<< HEAD
 from nicegui import Client, app, helpers, ui
 
 from src.header import add_head_html
 from src.config import DESCOPE_ID
+=======
+from nicegui import app, Client, ui
+
+from nicegui import Client, app, helpers, ui
+from src.header import add_head_html
+
+from src.config import (
+    DESCOPE_ID,
+)
+
+>>>>>>> 239bbce (first commit)
 
 
 try:
@@ -23,10 +35,19 @@ def handle_log_out(descope_client):
 
 def login_form() -> ui.element:
     """Create and return the Descope login form."""
+<<<<<<< HEAD
     ui.colors(primary="#1DB954",)
     add_head_html()
     with ui.row().classes('w-full h-full flex justify-center items-center'):
         return ui.element('descope-wc').props(f'project-id="{DESCOPE_ID}" flow-id="sign-up-or-in"') \
+=======
+    ui.colors(
+        primary="#1DB954",
+    )
+    add_head_html()
+    with ui.row().classes('w-full h-full flex justify-center items-center'):
+        return ui.element('descope-wc').props(f'project-id="{DESCOPE_ID}" flow-id="sign-in"') \
+>>>>>>> 239bbce (first commit)
             .on('success', lambda e: app.storage.user.update({'descope': e.args['detail']['user']}))
 
 
@@ -37,6 +58,12 @@ def about() -> Dict[str, Any]:
     """
     return app.storage.user['descope']
 
+<<<<<<< HEAD
+=======
+def token() -> Dict[str, Any]:
+    return app.storage.user['jwt_response']
+
+>>>>>>> 239bbce (first commit)
 
 async def logout() -> None:
     """Logout the user."""
@@ -70,9 +97,13 @@ class page(ui.page):
                     const sessionToken = sdk.getSessionToken()
                 </script>                 
             ''')
+<<<<<<< HEAD
             
             await client.connected()
             
+=======
+            await client.connected()
+>>>>>>> 239bbce (first commit)
             if await self._is_logged_in():
                 if self.path == self.LOGIN_PATH:
                     self._refresh()
