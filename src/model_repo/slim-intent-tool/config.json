@@ -1,0 +1,79 @@
+{
+ "model_name": "slim-intent-tool",
+ "model_ft_base": "slim-intent",
+ "quantization": "4Q_K_M GGUF",
+ "model_base": "tiny-llama",
+ "model_type": "llama",
+ "tokenizer": "llmware/slim-intent",
+ "parameters": "1.1 billion",
+ "description": "slim-intent is a function-calling model, fine-tuned to output structured dictionaries",
+ "prompt_wrapper": "human_bot",
+ "prompt_format": "<human> {context_passage} <classify> intent </classify>\n<bot>:",
+ "output_format": "{intent}",
+ "primary_keys": [
+  "intent"
+ ],
+ "output_values": [
+  "categorizes the intent expressed in the text"
+ ],
+ "publisher": "llmware",
+ "release_date": "february 2024",
+ "test_set": [
+  {
+   "context": "Invoice DATE March 3, 2022\tINVOICE NO 234\tABC Company 8675 River Run Road Marlington, CT 09392 INVOICE TO Delta Inc. 8723 Wilton Boulevard Los Angeles, CA HEBE HERACLES\tLASER PRINTER\tPAYMENT TERMS DUE DATE Due on Receipt May 3, 2022 QUANTITY DESCRIPTION UNIT PRICE LINE TOTAL 30 \tBoxes of Printer Paper\t$30\t$900 10\tPrinter Cartridges\t$75 $750 5\tLaser printers\t$500.00 $2500.00 Subtotal 4150.00 Sales Tax 10% Total 4565.00. \nConclusion: Payment is due on May 3, 2022.",
+   "classify": "NA"
+  },
+  {
+   "context": "This is the best electronics product I have ever used - the packaging, technology, and overall quality are exceptional, and the price is pretty good too. ",
+   "classify": "NA"
+  },
+  {
+   "context": "This is the third time I am calling to try to get support to resolve my issue. I am getting frustrated that we can not find any solution to my problem.",
+   "classify": "NA"
+  },
+  {
+   "context": "I have a hard time finding a complaint with the service, which was all around very good, and delivered up to my expectations.",
+   "classify": "NA"
+  },
+  {
+   "context": "Holds a charge poorly. This replacement phone battery is not holding a charge like I had hoped. Needs more frequent charging and is not performing like the original battery in the cell phone. Quite disappointing as I can not rely on my phone as I had before.",
+   "classify": "NA"
+  },
+  {
+   "context": "The overall experience has been OK - no real complaints, but not that great either.   I will probably continue to use the service, but may change my mind.",
+   "classify": "NA"
+  },
+  {
+   "context": "Here is my review of the new model - the conversational fluidity is excellent, as well as the overall accuracy in retrieving facts, but occassionally it does seem to hallucinatea little bit, but less than many other models that I have used.   One complaint is that theinference speed is rather slow, and it takes a lot of memory - so that is a knock on itcompared to some of its peers.",
+   "classify": "NA"
+  },
+  {
+   "context": "I am unhappy with your work, I have to file a damn claim\nI'm sorry to hear that you're unhappy with our work and feel the need to file a claim.",
+   "classify": "NA"
+  },
+  {
+   "context": "That is probably the single worst movie, show or production that I have ever seen,and it is shocking that so many noted professionals with good resumes were involvedin producing it.",
+   "classify": "NA"
+  },
+  {
+   "context": "Wow, I am completely blown away.   That is the best show that I have ever seen.",
+   "classify": "NA"
+  },
+  {
+   "context": "What is the process for getting my money back?   I don't want the product - it didn't work as advertised at all - so please just tell me where to ship it - and how to get my purchase price back.",
+   "classify": "NA"
+  },
+  {
+   "context": "Stocks rallied Friday even after the release of stronger-than-expected U.S. jobs data and a major increase in Treasury yields.  The Dow Jones Industrial Average gained 195.12 points, or 0.76%, to close at 31,419.58. The S&P 500 added 1.59% at 4,008.50. The tech-heavy Nasdaq Composite rose 1.35%, closing at 12,299.68. The U.S. economy added 438,000 jobs in August, the Labor Department said. Economists polled by Dow Jones expected 273,000 jobs. However, wages rose less than expected last month.  Stocks posted a stunning turnaround on Friday, after initially falling on the stronger-than-expected jobs report. ",
+   "classify": "NA"
+  },
+  {
+   "context": "The Nasdaq and the S&P 500 slid by 0.8% during their lowest points in the day.  Some noted it could be the softer wage number in the jobs report that made investors confirm their bearish stance. Others noted the pullback in yields from the day’s highs.  'We’re seeing a little bit of a give back in yields from where we were around 4.8%. 'We’ve had a lot of weakness in the market in recent weeks, and potentially some oversold conditions.'",
+   "classify": "NA"
+  },
+  {
+   "context": "This Agreement shall remain in effect until terminated. Either party may terminate this agreement, any Statement of Work or Services Description for convenience by giving the other party 30 days written notice. Either party may terminate this Agreement or any work order or services description if the other party is in material breach or default of any obligation that is not cured within 15 days’ notice of such breach. The TestCo agrees to pay all fees for services performed and expenses incurred prior to the termination of this Agreement. Termination of this Agreement will terminate all outstanding Statement of Work or Services Description entered into under this agreement.  Neither party may assign this Agreement or any Statement of Work or Services Description without the written consent of the other. Any attempt by a party to this Agreement to assign this Agreement or any Statement of Work or Services Description without the written consent of the other party may be deemed notice of termination of this Agreement, effective on the date of assignment, by the other party.",
+   "classify": "NA"
+  }
+ ]
+}

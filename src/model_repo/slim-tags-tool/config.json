@@ -1,0 +1,101 @@
+{
+ "model_name": "slim-tags-tool",
+ "quantization": "4Q_K_M GGUF",
+ "model_base": "tiny-llama",
+ "model_type": "llama",
+ "parameters": "1.1 billion",
+ "description": "slim-tags is a function-calling model, fine-tuned to output structured dictionaries",
+ "prompt_wrapper": "human_bot",
+ "prompt_format": "<human> {context_passage} <classify> tags </classify>\n<bot>:",
+ "output_format": "{list of relevant extractive summary tags in text}",
+ "primary_keys": [
+  "tags"
+ ],
+ "output_values": [
+  "list of extracted tags"
+ ],
+ "publisher": "llmware",
+ "release_date": "february 2024",
+ "test_set": [
+  {
+   "context": "Citibank announced a reduction in its targets for economic growth in France and the UK last week in light of ongoing concerns about inflation and unemployment, especially in large employers such as Airbus.",
+   "classify": "NA"
+  },
+  {
+   "context": "Michael Johnson grew up in California, and then moved to New York where he became the CEO of BlueWave Funds.  Since 1996, BlueWave Funds has been the leading asset manager focused on alternative investments in energy, utilities and other capital-intensive industries, with $16.3 billion of assets under management.",
+   "classify": "NA"
+  },
+  {
+   "context": "The two parties, TestCo Tech and White Water Industries, agreed to a partnership, as their CEOs,Susan Voss and John Ryan, shook hands in Milwaukee last week.   According to statements from the two companies, the intent is to create synergy by combining their offerings in adjacent markets and bringing new innovative solutions into the Fintech market.  The partnership is expected to lead to 3-5% increase in revenue in fiscal year 2025 for TestCo Tech, White Water Industries has not given formal guidance, but that it expects in total double-digit increases in earnings over the next several quarters.",
+   "classify": "NA"
+  },
+  {
+   "context": "The Republican National Committee has warned some of the 2024 GOP presidential candidates about attending an Iowa Christian organization’s Thanksgiving forum, saying it would disqualify them from participating in future RNC presidential debates. \nConclusion: if a candidate attends the Iowa Christian forum, then they can not participate in future debates.",
+   "classify": "NA"
+  },
+  {
+   "context": "Five candidates – former President Donald Trump, Florida Gov. Ron DeSantis, former South Carolina Gov. Nikki Haley, entrepreneur Vivek Ramaswamy and South Carolina Sen. Tim Scott – were invited to the Family Leader’s “Thanksgiving Family Forum” on November 17.",
+   "classify": "NA"
+  },
+  {
+   "context": "Forget Italy’s most famous active volcano, Mt. Vesuvius, which destroyed Pompei in 79 AD.  The most dangerous volcanic threat in Italy right now is one you’ve probably never heard of: Campi Flegrei, or the Phlegraean Fields.",
+   "classify": "NA"
+  },
+  {
+   "context": "THIS EXECUTIVE EMPLOYMENT AGREEMENT (this “Agreement”) is entered into this 2nd day of April, 2012, by and between Aphrodite Apollo (“Executive”) and TestCo Software, Inc. (the “Company” or “Employer”), and shall become effective upon Executive’s commencement of employment (the “Effective Date”) which is expected to commence on April 16, 2012. The Company and Executive agree that unless Executive has commenced employment with the Company as of April 16, 2012 (or such later date as agreed by each of the Company and Executive) this Agreement shall be null and void and of no further effect.",
+   "classify": "NA"
+  },
+  {
+   "context": "'The world's most advanced AI models are coming together with the world's most universal user interface - natural language - to create a new era of computing,' said Satya Nadella, chairman and chief executive officer of Microsoft. 'Across the Microsoft Cloud, we are the platform of choice to help customers get the most value out of their digital spend and innovate for this next generation of AI.' 'Focused execution by our sales teams and partners in this dynamic environment resulted in Microsoft Cloud revenue of $28.5 billion, up 22% (up 25% in constant currency) year-over-year,' said Amy Hood, executive vice president and chief financial officer of Microsoft.",
+   "classify": "NA"
+  },
+  {
+   "context": "Although Biden was generally acknowledged as the winner, General Services Administration head Emily W. Murphy initially refused to begin the transition to the president-elect, thereby denying funds and office space to his team. On November 23, after Michigan certified its results, Murphy issued the letter of ascertainment, granting the Biden transition team access to federal funds and resources for an orderly transition. Two days after becoming the projected winner of the 2020 election, Biden announced the formation of a task force to advise him on the COVID-19 pandemic during the transition, co-chaired by former Surgeon General Vivek Murthy, former FDA commissioner David A. Kessler, and Yale University's Marcella Nunez-Smith. On January 5, 2021, the Democratic Party won control of the United States Senate, effective January 20, as a result of electoral victories in Georgia by Jon Ossoff in a runoff election for a six-year term and Raphael Warnock in a special runoff election for a two-year term. President-elect Biden had supported and campaigned for both candidates prior to the runoff elections on January 5.On January 6, a mob of thousands of Trump supporters violently stormed the Capitol in the hope of overturning Biden's election, forcing Congress to evacuate during the counting of the Electoral College votes. More than 26,000 National Guard members were deployed to the capital for the inauguration, with thousands remaining into the spring.",
+   "classify": "NA"
+  },
+  {
+   "context": "Joe Biden's tenure as the 46th president of the United States began with his inauguration on January 20, 2021. Biden, a Democrat from Delaware who previously served as vice president under Barack Obama, took office following his victory in the 2020 presidential election over Republican incumbent president Donald Trump. Upon his inauguration, he became the oldest president in American history.",
+   "classify": "NA"
+  },
+  {
+   "context": "The economy grew at a much more rapid pace than expected in the final three months of 2023, as the U.S. easily skirted a recession that many forecasters had thought was inevitable, the Commerce Department reported Thursday.  Gross domestic product, a measure of all the goods and services produced, increased at a 3.3% annualized rate in the fourth quarter of 2023, according to data adjusted seasonally and for inflation.  That compared with the Wall Street consensus estimate for a gain of 2% in the final three months of the year. The third quarter grew at a 4.9% pace.",
+   "classify": "NA"
+  },
+  {
+   "context": "Comcast topped both revenue and profit estimates in the fourth quarter as it lost fewer broadband subscribers than expected, and it raised its dividend 7%, the company said Thursday. Here’s how Comcast performed, compared with estimates from analysts surveyed by LSEG, formerly known as Refinitiv.  Earnings per share: 84 cents adjusted vs. 79 cents expected  Revenue: $31.25 billion vs. $30.51 billion expected For the quarter ended Dec. 31, net income rose 7.8% to $3.26 billion, or 81 cents a share, compared with $3.02 billion, or 70 cents a share, a year earlier. Revenue increased 2.3% compared with the prior-year period. Adjusted earnings before interest, taxes, depreciation and amortization (EBITDA) was flat year over year at about $8 billion.   'For the third consecutive year, we generated the highest revenue, adjusted EBITDA and adjusted EPS in our company’s history', Comcast Chief Executive Officer Brian Roberts said in a statement. 'We also reported the highest adjusted EBITDA on record at Theme Parks; were the #1 studio in worldwide box office for the first time since 2015; and maintained Peacock’s position as the fastest growing streamer in the U.S.'",
+   "classify": "NA"
+  },
+  {
+   "context": "Manchester City have completed the signing of highly-rated Argentina under-23 midfielder Claudio Echeverri from River Plate, the club announced on Thursday.  The 18-year-old has penned a contract with the Premier League champions until June 2028 but will remain at River Plate until next January before moving to City.  Echeverri, who sources told ESPN had also received interest from Barcelona, captained Argentina at the under 17 World Cup last year and starred in their run to the semfinals, where they lost on penalties to Germany.  He scored five goals in the U17 World Cup, including a hat trick against Brazil in the quarterfinal, and picked up the Bronze Ball prize as the tournament's third highest scorer.  River handed Echeverri his first team debut in June last year and he made an immediate impact, providing an assist in a 3-1 win over Instituto. He has made six first-team appearances in total for the Argentine giants.  The deal City have agreed for Echeverri is similar to the arrangement that eventually brought Julián Álvarez to the Etihad.",
+   "classify": "NA"
+  },
+  {
+   "context": "It only took eight years, but apparently Jon Stewart has finally decided to answer the plea from my May 2016 CNN article titled, 'We need Jon Stewart back now!'  At the time, my point was that we desperately needed Stewart back in “The Daily Show” host chair because he was the comedic antidote to then-candidate Donald Trump’s 2016 presidential campaign. And after Trump won that election, many — including myself — believed that if only Stewart had not abdicated his late-night show in August 2015, Trump might well have been defeated.  That is why the news that Stewart is returning to “The Daily Show” in February as an executive producer and a host — even if just one day a week in that latter role — is more than the “Moment of Zen” he treated us to on his show for 16 years. It’s truly a moment of celebration.",
+   "classify": "NA"
+  },
+  {
+   "context": "DeepMind, the UK-based AI lab owned by Google’s parent company Alphabet, has developed an AI system called AlphaGeometry that can solve complex geometry problems close to human Olympiad gold medalists. In a new paper in Nature, DeepMind revealed that AlphaGeometry was able to solve 25 out of 30 benchmark geometry problems from past International Mathematical Olympiad (IMO) competitions within the standard time limits. This nearly matches the average score of 26 problems solved by human gold medalists on the same tests.  The AI system combines a neural language model with a rule-bound deduction engine, providing a synergy that enables the system to find solutions to complex geometry theorems.  AlphaGeometry took a revolutionary approach to synthetic data generation by creating one billion random diagrams of geometric objects and deriving relationships between points and lines in each diagram. This process – termed “symbolic deduction and traceback” – resulted in a final training dataset of 100 million unique examples, providing a rich source for training the AI system.",
+   "classify": "NA"
+  },
+  {
+   "context": "The Nasdaq Composite and the S&P 500 each rose for the fifth day in a row Wednesday. The S&P increased by a minuscule 0.08% but was still able to secure a new all-time closing record. The Nasdaq was led by a broader tech rally and finished the day 0.36% higher. The Dow missed out on the day’s rally and was dragged down by declines of more than 2% in Verizon and 3M, which each reported earnings on Tuesday. Netflix, meanwhile, soared after its Tuesday earnings report and finished the day with gains of more than 10%. Follow live market updates.",
+   "classify": "NA"
+  },
+  {
+   "context": "Tesla stock fell 8% in premarket trading after reporting fourth-quarter revenue and profit that missed analysts’ estimates. The electric vehicle company also warned that vehicle volume growth in 2024 'may be notably lower' than last year’s growth rate. Automotive revenue, meanwhile, increased just 1% from a year earlier, partly because the EVs were selling for less than they had in the past. Tesla implemented steep price cuts in the second half of the year around the world. In a Wednesday presentation, the company warned investors that it’s 'currently between two major growth waves.'",
+   "classify": "NA"
+  },
+  {
+   "context": "Alaska Airlines said the grounding of Boeing 737 Max 9 planes will cost the company $150 million. The Max 9s were grounded weeks ago after a door plug blew out during an Alaska Airlines flight while the plane was 16,000 feet above the ground, leaving a hole in the side of the aircraft. The airline said Thursday morning in a disclosure that it had been expecting to grow its capacity from 3% to 5% this year, but it now expects the growth to be “at or below the lower end of this range.” Alaska Airline’s announcement came on the heels of the Federal Aviation Administration late Wednesday clearing a path for the planes to return to service but halting Boeing’s plans to increase production of them.",
+   "classify": "NA"
+  },
+  {
+   "context": " It’s the city that’s the main character in all your favorite TV shows and movies, the inspiration behind countless songs and art – and one of the famous destinations in the world. Perhaps it’s no wonder, then, that media company Time Out has named New York City as its best city for 2024.  Time Out surveyed some 20,000 city-dwellers across the world, alongside its network of global writers and editors, to compile its latest round-up of the best cities in the globe.  New York City’s myriad of museums and its thriving theater scene were namechecked by Time Out as reasons why the US city clinched the top spot. NYC’s global reputation also played a role – the city was ranked as the place other global city-dwellers would most like to relocate to.  At number two on Time Out’s list is Cape Town, South Africa, a city ranked, according to Time Out, by 'every single survey respondent' as “beautiful,” thanks no doubt to its stunning combination of sea, cityscape and spectacular mountainous surroundings.  Time Out specifically shouted out Cape Town’s cultural offerings – from its late night museum evenings over the summer months to its theater and comedy offerings at Theatre on the Bay, as well as the newly opened Time Out Market Cape Town.",
+   "classify": "NA"
+  },
+  {
+   "context": "Two hundred and fifty years after American revolutionaries dumped tea into Boston Harbor, a fresh diplomatic storm is brewing between Britain and the United States over the cherished beverage.  Britain’s media has reacted with fury and bewilderment after a US scientist claimed the perfect cup of tea is made with a pinch of added salt.  Michelle Francl, who has written a book on the molecular science behind a good cuppa, believes the addition is needed to reduce the bitterness of the drink.",
+   "classify": "NA"
+  }
+ ]
+}

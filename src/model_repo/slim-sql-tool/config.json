@@ -1,0 +1,74 @@
+{
+ "model_name": "slim-sql-tool",
+ "model_ft_base": "slim-sql",
+ "quantization": "4Q_K_M GGUF",
+ "model_base": "llama",
+ "model_type": "llama",
+ "tokenizer": "llmware/slim-sql",
+ "parameters": "1.1 billion",
+ "description": "slim-sql is a text-to-sql model.",
+ "prompt_wrapper": "human_bot",
+ "prompt_format": "<human> {table_schema} \n {question} \n<bot>:",
+ "output_format": "{sql}",
+ "primary_keys": [],
+ "output_values": [],
+ "publisher": "llmware",
+ "release_date": "february 2024",
+ "test_set": [
+  {
+   "context": "CREATE TABLE customers (customer_name text, account_number integer,customer_level text, vip_customer text, annual_spend text, user_name text)",
+   "query": "Which customers are VIP customers?",
+   "answer": "SELECT * FROM customers WHERE vip_customer='yes'"
+  },
+  {
+   "context": "CREATE TABLE customers (customer_name text, account_number integer,customer_level text, vip_customer text, annual_spend text, user_name text)",
+   "query": "What is the annual spend for customer Rachel Michaels?",
+   "answer": "SELECT annual_spend FROM customers WHERE customer_name='Rachel Michaels'"
+  },
+  {
+   "context": "CREATE TABLE customers (customer_name text, account_number integer,customer_level text, vip_customer text, annual_spend text, user_name text)",
+   "query": "How many customers spend more than $1000 per year?",
+   "answer": "SELECT COUNT(*) FROM customers WHERE annual_spend > $1000"
+  },
+  {
+   "context": "CREATE TABLE customers (customer_name text, account_number integer,customer_level text, vip_customer text, annual_spend text, user_name text)",
+   "query": "Who are the customers with gold customer level?",
+   "answer": "SELECT customer_name FROM customers WHERE customer_level = 'gold'"
+  },
+  {
+   "context": "CREATE TABLE customers (customer_name text, account_number integer,customer_level text, vip_customer text, annual_spend text, user_name text)",
+   "query": "Which customer has account number 9382035?",
+   "answer": "SELECT * FROM customers WHERE account_number = 9382035"
+  },
+  {
+   "context": "CREATE TABLE customers (customer_name text, account_number integer,customer_level text, vip_customer text, annual_spend text, user_name text)",
+   "query": "What is the account number of customer Susanna Jones?",
+   "answer": "SELECT account_number FROM customers WHERE customer_name='Susanna Jones'"
+  },
+  {
+   "context": "CREATE TABLE library (library_name text, unique_doc_id integer, documents integer, blocks integer, images integer, pages integer, tables integer, account_name text)",
+   "query": "How many pages are in the human resources library?",
+   "answer": "SELECT pages FROM library WHERE library_name = 'human resources'"
+  },
+  {
+   "context": "CREATE TABLE library (library_name text, unique_doc_id integer, documents integer, blocks integer, images integer, pages integer, tables integer, account_name text)",
+   "query": "Which libraries have more than 1000 images?",
+   "answer": "SELECT * FROM library WHERE images > 1000"
+  },
+  {
+   "context": "CREATE TABLE library (library_name text, unique_doc_id integer, documents integer, blocks integer, images integer, pages integer, tables integer, account_name text)",
+   "query": "How many blocks are in the finance library?",
+   "answer": "SELECT blocks FROM library WHERE library_name = 'finance library'"
+  },
+  {
+   "context": "CREATE TABLE library (library_name text, unique_doc_id integer, documents integer, blocks integer, images integer, pages integer, tables integer, account_name text)",
+   "query": "What is a list of all of the libraries?",
+   "answer": "SELECT * FROM library"
+  },
+  {
+   "context": "CREATE TABLE library (library_name text, unique_doc_id integer, documents integer, blocks integer, images integer, pages integer, tables integer, account_name text)",
+   "query": "Which library has unique_doc_id of 8329?",
+   "answer": "SELECT * FROM library WHERE unique_doc_id = 8329"
+  }
+ ]
+}

@@ -1,0 +1,125 @@
+{
+ "model_name": "slim-nli-tool",
+ "model_ft_base": "slim-nli",
+ "quantization": "4Q_K_M GGUF",
+ "model_base": "tiny-llama",
+ "model_type": "llama",
+ "tokenizer": "llmware/slim-nli",
+ "parameters": "1.1 billion",
+ "description": "slim-nli is a function-calling model, fine-tuned to output structured dictionaries",
+ "prompt_wrapper": "human_bot",
+ "prompt_format": "<human> Evidence: {context_passage} \n Conclusion: {conclusion_passage} <classify> evidence </classify>\n<bot>:",
+ "output_format": "{contradicts | supports | neutral}",
+ "primary_keys": [
+  "evidence"
+ ],
+ "output_values": [
+  "contradicts",
+  "supports",
+  "neutral"
+ ],
+ "publisher": "llmware",
+ "release_date": "february 2024",
+ "test_set": [
+  {
+   "context": "Citibank announced a reduction in its targets for economic growth in France and the UK last week in light of ongoing concerns about inflation and unemployment, especially in large employers such as Airbus.",
+   "conclusion": "Citibank is optimistic about growth in France and the UK",
+   "classify": "contradicts"
+  },
+  {
+   "context": "Michael Johnson grew up in California, and then moved to New York where he became the CEO of BlueWave Funds.  Since 1996, BlueWave Funds has been the leading asset manager focused on alternative investments in energy, utilities and other capital-intensive industries, with $16.3 billion of assets under management.",
+   "conclusion": "Bluewave has $16.3 billion of assets under management.",
+   "classify": "supports"
+  },
+  {
+   "context": "THIS EXECUTIVE EMPLOYMENT AGREEMENT (this “Agreement”) is entered into this 2nd day of April, 2012, by and between Aphrodite Apollo (“Executive”) and TestCo Software, Inc. (the “Company” or “Employer”), and shall become effective upon Executive’s commencement of employment (the “Effective Date”) which is expected to commence on April 16, 2012. The Company and Executive agree that unless Executive has commenced employment with the Company as of April 16, 2012 (or such later date as agreed by each of the Company and Executive) this Agreement shall be null and void and of no further effect.",
+   "conclusion": "Aphrodite Apollo is a highly skilled executive.",
+   "classify": "neutral"
+  },
+  {
+   "context": "Joe Biden's tenure as the 46th president of the United States began with his inauguration on January 20, 2021. Biden, a Democrat from Delaware who previously served as vice president under Barack Obama, took office following his victory in the 2020 presidential election over Republican incumbent president Donald Trump. Upon his inauguration, he became the oldest president in American history.",
+   "conclusion": "Joe Biden is a Republican.",
+   "classify": "contradicts"
+  },
+  {
+   "context": "The economy grew at a much more rapid pace than expected in the final three months of 2023, as the U.S. easily skirted a recession that many forecasters had thought was inevitable, the Commerce Department reported Thursday.  Gross domestic product, a measure of all the goods and services produced, increased at a 3.3% annualized rate in the fourth quarter of 2023, according to data adjusted seasonally and for inflation.  That compared with the Wall Street consensus estimate for a gain of 2% in the final three months of the year. The third quarter grew at a 4.9% pace.",
+   "conclusion": "The economy is growing more slowly than economists had predicted.",
+   "classify": "contradicts"
+  },
+  {
+   "context": "Comcast topped both revenue and profit estimates in the fourth quarter as it lost fewer broadband subscribers than expected, and it raised its dividend 7%, the company said Thursday. Here’s how Comcast performed, compared with estimates from analysts surveyed by LSEG, formerly known as Refinitiv.  Earnings per share: 84 cents adjusted vs. 79 cents expected  Revenue: $31.25 billion vs. $30.51 billion expected For the quarter ended Dec. 31, net income rose 7.8% to $3.26 billion, or 81 cents a share, compared with $3.02 billion, or 70 cents a share, a year earlier. Revenue increased 2.3% compared with the prior-year period. Adjusted earnings before interest, taxes, depreciation and amortization (EBITDA) was flat year over year at about $8 billion.   'For the third consecutive year, we generated the highest revenue, adjusted EBITDA and adjusted EPS in our company’s history', Comcast Chief Executive Officer Brian Roberts said in a statement. 'We also reported the highest adjusted EBITDA on record at Theme Parks; were the #1 studio in worldwide box office for the first time since 2015; and maintained Peacock’s position as the fastest growing streamer in the U.S.'",
+   "conclusion": "Comcast had its highest revenue in company history in the last year.",
+   "classify": "supports"
+  },
+  {
+   "context": "Manchester City have completed the signing of highly-rated Argentina under-23 midfielder Claudio Echeverri from River Plate, the club announced on Thursday.  The 18-year-old has penned a contract with the Premier League champions until June 2028 but will remain at River Plate until next January before moving to City.  Echeverri, who sources told ESPN had also received interest from Barcelona, captained Argentina at the under 17 World Cup last year and starred in their run to the semfinals, where they lost on penalties to Germany.  He scored five goals in the U17 World Cup, including a hat trick against Brazil in the quarterfinal, and picked up the Bronze Ball prize as the tournament's third highest scorer.  River handed Echeverri his first team debut in June last year and he made an immediate impact, providing an assist in a 3-1 win over Instituto. He has made six first-team appearances in total for the Argentine giants.  The deal City have agreed for Echeverri is similar to the arrangement that eventually brought Julián Álvarez to the Etihad.",
+   "conclusion": "Claudio Echeverri is joining Manchester City.",
+   "classify": "supports"
+  },
+  {
+   "context": "It only took eight years, but apparently Jon Stewart has finally decided to answer the plea from my May 2016 CNN article titled, 'We need Jon Stewart back now!'  At the time, my point was that we desperately needed Stewart back in “The Daily Show” host chair because he was the comedic antidote to then-candidate Donald Trump’s 2016 presidential campaign. And after Trump won that election, many — including myself — believed that if only Stewart had not abdicated his late-night show in August 2015, Trump might well have been defeated.  That is why the news that Stewart is returning to “The Daily Show” in February as an executive producer and a host — even if just one day a week in that latter role — is more than the “Moment of Zen” he treated us to on his show for 16 years. It’s truly a moment of celebration.",
+   "conclusion": "Jon Stewart is returning to television in February.",
+   "classify": "supports"
+  },
+  {
+   "context": "DeepMind, the UK-based AI lab owned by Google’s parent company Alphabet, has developed an AI system called AlphaGeometry that can solve complex geometry problems close to human Olympiad gold medalists. In a new paper in Nature, DeepMind revealed that AlphaGeometry was able to solve 25 out of 30 benchmark geometry problems from past International Mathematical Olympiad (IMO) competitions within the standard time limits. This nearly matches the average score of 26 problems solved by human gold medalists on the same tests.  The AI system combines a neural language model with a rule-bound deduction engine, providing a synergy that enables the system to find solutions to complex geometry theorems.  AlphaGeometry took a revolutionary approach to synthetic data generation by creating one billion random diagrams of geometric objects and deriving relationships between points and lines in each diagram. This process – termed “symbolic deduction and traceback” – resulted in a final training dataset of 100 million unique examples, providing a rich source for training the AI system.",
+   "conclusion": "Michelle Vimmson won the IMO competition in 2022.",
+   "classify": "neutral"
+  },
+  {
+   "context": "The Nasdaq Composite and the S&P 500 each rose for the fifth day in a row Wednesday. The S&P increased by a minuscule 0.08% but was still able to secure a new all-time closing record. The Nasdaq was led by a broader tech rally and finished the day 0.36% higher. The Dow missed out on the day’s rally and was dragged down by declines of more than 2% in Verizon and 3M, which each reported earnings on Tuesday. Netflix, meanwhile, soared after its Tuesday earnings report and finished the day with gains of more than 10%. Follow live market updates.",
+   "conclusion": "The stock markets have increased over the last week.",
+   "classify": "supports"
+  },
+  {
+   "context": "Tesla stock fell 8% in premarket trading after reporting fourth-quarter revenue and profit that missed analysts’ estimates. The electric vehicle company also warned that vehicle volume growth in 2024 'may be notably lower' than last year’s growth rate. Automotive revenue, meanwhile, increased just 1% from a year earlier, partly because the EVs were selling for less than they had in the past. Tesla implemented steep price cuts in the second half of the year around the world. In a Wednesday presentation, the company warned investors that it’s 'currently between two major growth waves.'",
+   "conclusion": "Tesla's growth rate is expected to be higher in 2024 than 2023.",
+   "classify": "contradicts"
+  },
+  {
+   "context": "Alaska Airlines said the grounding of Boeing 737 Max 9 planes will cost the company $150 million. The Max 9s were grounded weeks ago after a door plug blew out during an Alaska Airlines flight while the plane was 16,000 feet above the ground, leaving a hole in the side of the aircraft. The airline said Thursday morning in a disclosure that it had been expecting to grow its capacity from 3% to 5% this year, but it now expects the growth to be “at or below the lower end of this range.” Alaska Airline’s announcement came on the heels of the Federal Aviation Administration late Wednesday clearing a path for the planes to return to service but halting Boeing’s plans to increase production of them.",
+   "conclusion": "Alaska Airlines is increasing its growth targets.",
+   "classify": "contradicts"
+  },
+  {
+   "context": " It’s the city that’s the main character in all your favorite TV shows and movies, the inspiration behind countless songs and art – and one of the famous destinations in the world. Perhaps it’s no wonder, then, that media company Time Out has named New York City as its best city for 2024.  Time Out surveyed some 20,000 city-dwellers across the world, alongside its network of global writers and editors, to compile its latest round-up of the best cities in the globe.  New York City’s myriad of museums and its thriving theater scene were namechecked by Time Out as reasons why the US city clinched the top spot. NYC’s global reputation also played a role – the city was ranked as the place other global city-dwellers would most like to relocate to.  At number two on Time Out’s list is Cape Town, South Africa, a city ranked, according to Time Out, by 'every single survey respondent' as “beautiful,” thanks no doubt to its stunning combination of sea, cityscape and spectacular mountainous surroundings.  Time Out specifically shouted out Cape Town’s cultural offerings – from its late night museum evenings over the summer months to its theater and comedy offerings at Theatre on the Bay, as well as the newly opened Time Out Market Cape Town.",
+   "conclusion": "New York was selected as the best city in 2024.",
+   "classify": "supports"
+  },
+  {
+   "context": "Two hundred and fifty years after American revolutionaries dumped tea into Boston Harbor, a fresh diplomatic storm is brewing between Britain and the United States over the cherished beverage.  Britain’s media has reacted with fury and bewilderment after a US scientist claimed the perfect cup of tea is made with a pinch of added salt.  Michelle Francl, who has written a book on the molecular science behind a good cuppa, believes the addition is needed to reduce the bitterness of the drink.",
+   "conclusion": "US scientist is recommending the use of salt in tea to reduce the bitterness of the drink.",
+   "classify": "supports"
+  },
+  {
+   "context": "This is the best electronics product I have ever used - the packaging, technology, and overall quality are exceptional, and the price is pretty good too. ",
+   "conclusion": "The customer is happy with the product.",
+   "classify": "supports"
+  },
+  {
+   "context": "This is the third time I am calling to try to get support to resolve my issue. I am getting frustrated that we can not find any solution to my problem.",
+   "conclusion": "The customer is happy with support for finding a solution right away.",
+   "classify": "contradicts"
+  },
+  {
+   "context": "Python 3.12 introduces a new concept called immortal objects. It changes the way how Python handles reference counting.   Python interpreter can now skip reference counting for some objects that live until the Python process terminates (e.g., for None, True and False). All objects that have the refcount set to 0xFFFFFFFF (4294967295) are now considered immortal. Such a change allows some Python objects to be completely static in memory, which is a good optimization for Python applications that use multiprocessing and copy-on-write mechanism. To get more information, you can read PEP 683.",
+   "conclusion": "Immortal objects allow some Python objects to be completely static in memory.",
+   "classify": "supports"
+  },
+  {
+   "context": "Journalists at The New York Daily News walked off the job on Thursday for the first time in more than three decades.  Newsroom workers at The Daily News Union, which formed in 2021, are in negotiations for their first contract. The union called a one-day work stoppage to protest staffing cuts, as well as a new policy that requires workers to get advance approval for overtime.  The Daily News, founded in 1919, was once a formidable city tabloid racing for scoops against its rival, The New York Post, and was one of the largest newspapers in the country by circulation. But in recent years, the paper has been hollowed out by ownership changes and staffing cuts as it struggled against ever-declining circulation and dwindling revenue.  In 2021, its parent company, Tribune Publishing, was purchased by Alden Global Capital, an investment firm that has bought up hundreds of newspapers across the country, acquiring a reputation along the way for making deep cuts to newsrooms.",
+   "conclusion": "Journalists at the NY Daily News are not happy about a new policy requiring advance approval to receive overtime.",
+   "classify": "supports"
+  },
+  {
+   "context": "Since then, among very high expectations of “number go up,” bitcoin has been doing little else but fall — hard. By Tuesday, it had fallen 20 percent from its recent peak, officially entering a bear market. Some of this could be chalked up to hype, but money has mostly been flowing into these new bitcoin ETFs — more than $10 billion altogether. Flowing into all them, that is, except one: the Grayscale Bitcoin Trust, which has been absolutely hemorrhaging money (and bitcoin) in the days since the ETFs began trading. The Grayscale Trust — a core part of the troubled Digital Currency Group — is one of the world’s largest holders of bitcoin, about as well known and respected as you can get in crypto world (which, to be fair, is grading on a pretty steep curve).",
+   "conclusion": "Bitcoin's price has been falling quickly from its recent peak.",
+   "classify": "contradicts"
+  },
+  {
+   "context": "Another challenge of cloud computing is reduced visibility and control. Cloud users may not have full insight into how their cloud resources are managed, configured, or optimized by their providers. They may also have limited ability to customize or modify their cloud services according to their specific needs or preferences. Complete understanding of all technology may be impossible, especially given the scale, complexity, and deliberate opacity of contemporary systems; however, there is a need for understanding complex technologies and their interconnections to have power and agency within them.[35] The metaphor of the cloud can be seen as problematic as cloud computing retains the aura of something noumenal and numinous; it is something experienced without precisely understanding what it is or how it works.",
+   "conclusion": "Traditional data center costs have been increasing 10% per year.",
+   "classify": "neutral"
+  }
+ ]
+}
